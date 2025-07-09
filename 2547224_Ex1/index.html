@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Greenwood Academy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <script>
+    window.onload = function() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getPositions, showError);
+      } else {
+        console.log("Browser doesn't support Geolocation");
+      }
+    };
+
+    function getPositions(position) {
+      document.getElementById("lat").innerText = position.coords.latitude;
+      document.getElementById("lon").innerText = position.coords.longitude;
+      document.getElementById("timestamp").innerText = new Date(position.timestamp);
+    }
+
+    function showError(error) {
+      let msg = "";
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          msg = "User Denied Permission";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          msg = "Not able to fetch the user position";
+          break;
+        case error.TIMEOUT:
+          msg = "Time out";
+          break;
+        case error.UNKNOWN_ERROR:
+          msg = "Unknown Error";
+          break;
+      }
+      displayError(msg);
+    }
+
+    function displayError(msg) {
+      document.getElementById("error").innerText = msg;
+    }
+  </script>
+
+  <header>
+    <h1>Greenwood Academy</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="location">
+      <h2>Your Current Location</h2>
+      <p>Latitude: <span id="lat">-</span></p>
+      <p>Longitude: <span id="lon">-</span></p>
+      <p>Timestamp: <span id="timestamp">-</span></p>
+      <div id="error" class="error"></div>
+    </section>
+
+    <section class="map-container">
+      <div class="responsive-map">
+        <iframe
+          width="955"
+          height="350"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=77.60407447814943%2C12.931956896248895%2C77.60729849338533%2C12.936008840596902&amp;layer=mapnik&amp;marker=12.933982876648926%2C77.60568648576736"
+          style="border: 1px solid black"
+        ></iframe>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About us</h2>
+      <div class="flex-row">
+        <article>
+          <p>
+            Greenwood Academy's School Management System is designed to efficiently handle all aspects of academic and administrative operations.
+            It manages student and teacher records, class schedules, subjects, exam results, and more.
+            The system enhances productivity, ensures smooth coordination among faculty and staff, and fosters strong communication with students and parents — 
+            all in support of Greenwood Academy's mission to deliver excellence in education.
+          </p>
+        </article>
+        <img src="school.png" alt="Illustration of school management software" width="200" height="200" />
+      </div>
+    </section>
+
+    <section id="features">
+      <h2>Key Features</h2>
+      <div class="flex-bullet">
+        <ul>
+          <li>Highly Qualified and Experienced Faculty</li>
+          <li>Modern Classrooms with Smart Learning Tools</li>
+          <li>Comprehensive Curriculum with Emphasis on Holistic Development</li>
+          <li>Regular Assessments and Transparent Evaluation</li>
+          <li>Well-stocked Library and Advanced Science Labs</li>
+          <li>Sports, Arts, and Cultural Programs for All-Round Growth</li>
+          <li>Safe Campus with Real-Time Parent Communication</li>
+          <li>Eco-friendly Campus Promoting Sustainable Practices</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="feedback">
+      <h2>Feedback</h2>
+      <form>
+        <input type="text" id="fname" placeholder="Your Name" required />
+        <textarea id="fcomment" placeholder="Your Comment" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+
+      <button id="clear-feedback" style="margin-top: 1rem; background-color: #b91c1c; color: white; padding: 0.5rem; border: none; border-radius: 4px; cursor: pointer;">
+        Clear All Feedback
+      </button>
+
+      <div id="feedback-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Evan Mathew | June 25, 2025</p>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const form = document.querySelector('form');
+      const nameInput = document.getElementById('fname');
+      const commentInput = document.getElementById('fcomment');
+      const feedbackList = document.getElementById('feedback-list');
+      const clearBtn = document.getElementById('clear-feedback');
+
+      displayFeedback();
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = nameInput.value.trim();
+        const comment = commentInput.value.trim();
+
+        if (name && comment) {
+          const feedback = { name, comment };
+          let feedbackData = JSON.parse(localStorage.getItem('feedbackData')) || [];
+          feedbackData.push(feedback);
+          localStorage.setItem('feedbackData', JSON.stringify(feedbackData));
+
+          form.reset();
+          displayFeedback();
+        }
+      });
+
+      clearBtn.addEventListener('click', () => {
+        localStorage.removeItem('feedbackData');
+        displayFeedback();
+      });
+
+      function displayFeedback() {
+        let feedbackData = JSON.parse(localStorage.getItem('feedbackData')) || [];
+        feedbackList.innerHTML = '';
+
+        if (feedbackData.length === 0) {
+          feedbackList.innerHTML = '<p>No feedback submitted yet.</p>';
+        } else {
+          feedbackData.forEach(entry => {
+            const div = document.createElement('div');
+            div.className = 'feedback-entry';
+            div.innerHTML = `<strong>${entry.name}</strong>: <p>${entry.comment}</p>`;
+            feedbackList.appendChild(div);
+          });
+        }
+      }
+    });
+  </script>
+</body>
+</html>
