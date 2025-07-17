@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com/?authuser=1"></script>
+    <script src="https://kit.fontawesome.com/7012431467.js"></script>
+    <title>CofeeHub</title>
+</head>
+<body>
+    <nav class="flex items-center justify-between px-6 py-7 bg-[#6f4e37] text-white font-bold">
+        <h2 class="text-2xl"><i class="fa-solid fa-mug-saucer"></i> CoffeeHub</h2>
+        <div class="hidden md:flex space-x-3" >
+            <a href="#home" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium"><i class="fa-solid fa-house"></i> HOME</a>
+            <a href="#about" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium"><i class="fa-solid fa-people-group"></i> ABOUT</a>
+            <a href="#gallery" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium"><i class="fa-solid fa-mug-hot"></i> GALLERY</a>
+            <a href="#audio" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium"><i class="fa-regular fa-circle-play"></i> AUDIO</a>
+            <a href="#video" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium"><i class="fa-solid fa-video"></i> VIDEO</a>
+            <a href="#location" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium"><i class="fa-solid fa-map-pin"></i> MAP</a>  
+            <a href="#contact" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium"><i class="fa-solid fa-address-book"></i> CONTACT</a>
+            <input type="text" id="title" placeholder="Search Box" class="text-black px-4 py-1 rounded w-64" />
+        </div>
+
+        <div id="menu-ham" class="md:hidden">
+            <button class="text-white text-lg">
+                <i class="fa-bars fa-solid"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="resp-mobile" class="hidden md:hidden absolute right-4 w-1/2 bg-[#6f4e37] mt-2 me-2 py-4 rounded-md shadow-lg">
+        <div class="flex flex-col items-center text-center text-white space-y-4 px-4 py-2">
+            <a href="#home" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium">HOME</a>
+            <a href="#about" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium">ABOUT</a>
+            <a href="#gallery" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium">GALLERY</a>
+            <a href="#audio" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium">AUDIO</a>
+            <a href="#video" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium">VIDEO</a>  
+            <a href="#contact" class="text-white  hover:bg-[#473222] px-3 py-2 rounded font-medium">CONTACT</a>
+        </div>
+    </div>
+
+    <script>
+    document.querySelector("#menu-ham").addEventListener('click',() =>{
+        const mobilemenu = document.querySelector('#resp-mobile')
+        mobilemenu.classList.toggle('hidden')
+    })
+  </script>
+
+    <section id="home" class="w-full h-[840px] bg-cover text-white py-24 text-center flex flex-col justify-center items-center bg-black/50 bg-blend-multiply" style="background-image: url(iso-republic-bird-image-in-latte-art.jpg);">
+        <div class="bg-black/40 p-5 rounded ">
+            <h2 class="text-5xl font-extrabold mb-4">Welcome to CoffeeHub</h2>
+            <p class="text-lg font-bold">Life's too short to drink bad coffee.</p>
+        </div>
+    </section>
+
+    <section id="about" class="p-20 bg-white text-center">
+        <h3 class="text-3xl font-bold mb-4 text-[#6f4e37]">About CoffeeHub</h3>
+        <p class="text-gray-600 mx-auto text-center">
+            A cup of coffee shared with a friend is happiness tasted and time well spent,<br>Coffee – it’s the lifeblood that fuels the dreams of champions!
+        </p>
+    </section>
+
+    <section id="gallery" class="bg-[#6f4e37] py-9 px-5">
+        <h3 class="text-3xl font-bold mb-6 text-center text-white">CoffeeHub Gallery</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white p-4 rounded shadow-20">
+                <img src="isorepublic-coffee-cup-cafe-1.jpg" alt="cappuccino" class="rounded mb-2 h-[300px] w-full">
+                <p class="text-sm text-center text-gray-700">Cappuccino</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <img src="isorepublic-coffee-latte-table-1.jpg" alt="latte" class="rounded mb-2 h-[300px] w-full">
+                <p class="text-sm text-center text-gray-700">Latte</p>
+            </div>
+            <div class="bg-white p-4 rounded shadow">
+                <img src="shotstash_0183-1.jpg" alt="espresso" class="rounded mb-2 h-[300px] w-full">
+                <p class="text-sm text-center text-gray-700">Espresso</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="audio" class="p-20 bg-white text-center">
+        <h3 class="text-3xl font-bold mb-4 text-[#6f4e37] py-7">CoffeeHub Audio</h3>
+        <audio controls class="w-full">
+            <source src="Set2_Audio.mp3">
+        </audio>
+    </section>
+
+    <section id="video" class="flex flex-col items-center justify-center p-10 bg-[#6f4e37]">
+        <h1 class="text-white text-3xl mb-6 font-bold text-center">CoffeeHub Video</h1>
+        <div class="w-full bg-white py-5 px-5 rounded">
+            <video controls class="w-full">
+                <source src="Set2_Video.mp4">
+                <track src="Set2_Video.vtt" kind="subtitles" srclang="en" label="Subtitles" default>
+            </video>
+        </div>
+    </section>
+
+
+      
+
+
+    <section id="location" class="flex flex-col items-center justify-center p-10">
+        <h2 class="text-3xl font-bold mb-4 text-[#6f4e37] py-7">Your Current Location</h2>
+        <div class="mt-6 flex justify-center mb-7">
+        <iframe
+            width="1550"
+            height="350"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=77.60407447814943%2C12.931956896248895%2C77.60729849338533%2C12.936008840596902&amp;layer=mapnik&amp;marker=12.933982876648926%2C77.60568648576736"
+            style="border: 1px solid black"
+            ></iframe>
+        </div>
+        
+        <p>Latitude: <span id="lat">-</span></p>
+        <p>Longitude: <span id="lon">-</span></p>
+        <div id="error" class="error"></div>
+    </section>
+
+    <script>
+      window.onload = function() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(getPositions, showError);
+        } else {
+          console.log("Browser doesn't support Geolocation");
+        }
+      };
+
+      function getPositions(position) {
+        document.getElementById("lat").innerText = position.coords.latitude;
+        document.getElementById("lon").innerText = position.coords.longitude;
+      }
+
+      function showError(error) {
+        let msg = "";
+        switch (error.code) {
+          case error.PERMISSION_DENIED:
+            msg = "User Denied Permission";
+            break;
+          case error.TIMEOUT:
+            msg = "Time out";
+            break;
+        }
+        displayError(msg);
+      }
+
+      function displayError(msg) {
+        document.getElementById("error").innerText = msg;
+      }
+  </script>
+
+  
+
+    <section id="contact" class="p-10 bg-white text-center">
+        <h3 class="text-3xl font-semibold mb-4 text-[#6f4e37]">Contact Us</h3>
+        <p class="text-gray-600 mb-4">What is your favorite Cofee?</p>
+        <p id="welcome" class="text-[#6f4e37] text-lg font-bold mb-4"></p>
+        <form id="FavoriteCoffeeForm" class="max-w-md mx-auto">
+            <input id="Name" type="text" placeholder="Your Name" required class="w-full m-3 p-2 border border-[#6f4e37] rounded" />
+            <input id="email" type="email" placeholder="Your Email" required class="w-full m-3 p-2 border border-[#6f4e37] rounded" />
+            <textarea id="coffee" placeholder="Your Favorite Coffee" required rows="4" class="w-full m-3 p-2 border border-[#6f4e37] rounded"></textarea>
+            <button type="submit" class="m-4 bg-[#6f4e37] text-white px-4 py-2 rounded hover:bg-[#473222]">Send</button>
+        </form>
+        <script>
+            document.getElementById("FavoriteCoffeeForm").onsubmit = e => {
+                e.preventDefault();
+                localStorage.setItem("name", Name.value);
+                localStorage.setItem("email", email.value);
+                localStorage.setItem("coffee", coffee.value);
+                info.textContent = "Saved to local Storage Successfully";
+            };
+
+            window.addEventListener('DOMContentLoaded', () => {
+            const DName = localStorage.getItem("name");
+            const FavCoffee = localStorage.getItem("coffee");
+
+            if (DName && FavCoffee) {
+                document.getElementById("welcome").textContent = `Hello, ${DName} ! You Love Favorite Coffee is ${FavCoffee}.`;
+            }
+        });
+        </script>
+    </section>
+
+    <footer class="text-white text-center p-4 bg-[#6f4e37]">
+        &copy; EVAN JOHN MATHEW, 2547224. CIA-1, FULL STACK DEVELOPMENT.
+    </footer>
+</body>
+</html>
