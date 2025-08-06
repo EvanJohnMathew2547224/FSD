@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Feedback</title>
+  <script defer src="script.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen p-4">
+  <div class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4 text-center">Guest Lecture Feedback Form</h2>
+    <form id="feedbackForm" class="space-y-4">
+      <input type="text" id="name" placeholder="Full Name" class="w-full p-2 border rounded" required />
+      <input type="email" id="email" placeholder="Email" class="w-full p-2 border rounded" required />
+      <select id="department" class="w-full p-2 border rounded" required>
+        <option value="">Select Department</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Commerce">Commerce</option>
+        <option value="Management">Management</option>
+      </select>
+      <div class="flex items-center justify-between">
+        <label class="font-semibold">Rating:</label>
+        <div id="ratingGroup" class="flex gap-2">
+          <label><input type="radio" name="rating" value="1" required /> 1</label>
+          <label><input type="radio" name="rating" value="2" /> 2</label>
+          <label><input type="radio" name="rating" value="3" /> 3</label>
+          <label><input type="radio" name="rating" value="4" /> 4</label>
+          <label><input type="radio" name="rating" value="5" /> 5</label>
+        </div>
+      </div>
+      <div>
+        <textarea id="comments" rows="4" placeholder="Additional Comments..." class="w-full p-2 border rounded"></textarea>
+        <p class="text-sm text-right text-gray-500"><span id="charCount">0</span> characters</p>
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Submit Feedback</button>
+      <button type="button" id="clearAll" class="w-full mt-2 bg-red-500 text-white py-2 rounded hover:bg-red-600">Clear All Feedbacks</button>
+    </form>
+  </div>
+
+  <div class="max-w-xl mx-auto mt-6">
+    <h3 class="text-xl font-semibold mb-4">Saved Feedbacks:</h3>
+    <div id="feedbackList" class="space-y-4"></div>
+  </div>
+</body>
+</html>
